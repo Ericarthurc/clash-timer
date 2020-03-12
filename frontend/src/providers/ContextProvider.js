@@ -5,10 +5,16 @@ import Context from "../context";
 import axios from "axios";
 import { Service } from "axios-middleware";
 
+// COOKIES
+import Cookies from "universal-cookie";
+
 // HISTORY
 import history from "../history";
 
 const ContextProvider = props => {
+  // CREATE COOKIE
+  const cookies = new Cookies();
+
   // AXIOS MIDDLEWARE FOR TESTING
   const service = new Service(axios);
 
@@ -43,6 +49,7 @@ const ContextProvider = props => {
       history.push("/main");
     } catch (error) {
       history.push("/login");
+      cookies.set("loggedIn", 0);
       console.log(error);
     }
   };

@@ -63,6 +63,10 @@ exports.loginUser = async (req, res, next) => {
       httpOnly: true,
       ...options
     });
+    res.cookie("loggedIn", 1, {
+      maxAge: 48 * 60 * 60 * 1000,
+      ...options
+    });
     res.status(200).json({ success: true, user, token });
   } catch (error) {
     res.status(500).json({ success: false, error });
@@ -80,7 +84,8 @@ exports.logoutUser = async (req, res, next) => {
     });
     await req.user.save();
 
-    res.clearCookie("authToken").end();
+    res.clearCookie("authToken");
+    res.clearCookie("loggedIn");
     res.status(200).json({ success: true });
   } catch (error) {
     res.status(500).send();

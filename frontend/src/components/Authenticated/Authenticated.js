@@ -17,8 +17,8 @@ const Authenticated = props => {
     <>
       <Logout></Logout>
       <p>{user.username}</p>
+      <Timers></Timers>
       <button onClick={logoutHandler}>LOGOUT</button>
-      {/* <Timers></Timers> */}
     </>
   );
 };
