@@ -49,7 +49,6 @@ const ContextProvider = props => {
       history.push("/main");
     } catch (error) {
       history.push("/login");
-      cookies.set("loggedIn", 0);
       console.log(error);
     }
   };

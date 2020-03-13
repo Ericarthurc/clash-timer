@@ -58,4 +58,18 @@ exports.updateTimer = async (req, res, next) => {};
 // @desc    Delete single timer
 // @route   DELETE /api/v1/timers/:id
 // @access  Private
-exports.deleteTimer = async (req, res, next) => {};
+exports.deleteTimer = async (req, res, next) => {
+  try {
+    const task = await Timer.findOneAndDelete({
+      _id: req.params.id,
+      owner: req.user._id
+    });
+    if (!task) {
+      res.status(404).json({ success: false, error });
+    }
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error });
+  }
+};

@@ -88,7 +88,7 @@ exports.logoutUser = async (req, res, next) => {
     res.clearCookie("loggedIn");
     res.status(200).json({ success: true });
   } catch (error) {
-    res.status(500).send();
+    res.status(500).json({ success: false, error });
   }
 };
 

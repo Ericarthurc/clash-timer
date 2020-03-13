@@ -27,9 +27,9 @@ const App = () => {
 
   return (
     <>
-      <Route path="/" render={() => <div></div>} />
+      <Route exact path="/" render={() => <div></div>} />
       <Route exact path="/login" render={props => <NotAuthenticated />} />
-      <Route path="/main" render={props => <Authenticated />} />
+      <Route exact path="/main" render={props => <Authenticated />} />
     </>
   );
 };

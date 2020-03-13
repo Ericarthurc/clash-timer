@@ -1,10 +1,22 @@
 import React from "react";
 
+// AXIOS
+import axios from "axios";
+
 const Timer = props => {
   return (
-    <>
-      <p>{props.description}</p>
-    </>
+    <div className="auth__timer-content">
+      <div className="auth__timer-content__info">
+        <p>{props.description}</p>
+      </div>
+      <div
+        className="auth__timer-content__close"
+        onClick={() => props.deleteHandler(props._id)}
+      >
+        {/* SVG HERE */}
+        <p>X</p>
+      </div>
+    </div>
   );
 };
 

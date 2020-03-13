@@ -9,16 +9,18 @@ import axios from "axios";
 // COOKIES
 import Cookies from "universal-cookie";
 
+// HISTORY
+import history from "../../../history";
+
 // REACT COMPONENTS
 import Timer from "./Timer/Timer";
 
 const Timers = () => {
   const cookies = new Cookies();
   const [timers, setTimers] = useState([]);
-  const { user } = useContext(Context);
 
   const timersHandler = async () => {
-    if (cookies.get("loggedIn") == 1) {
+    if (cookies.get("loggedIn") === "1") {
       try {
         const data = await axios.get("/api/v1/timers", {
           credentials: "include"
@@ -29,6 +31,21 @@ const Timers = () => {
         console.log(error);
       }
     } else {
+      // maybe to push to error?
+      // will push back to login even if good cookie is present
+      history.push("/login");
+    }
+  };
+
+  const deleteHandler = async _id => {
+    try {
+      await axios.delete(`/api/v1/timers/${_id}`, {
+        credentials: "include"
+      });
+      // GRABS NEW ARRAY AFTER DELETION
+      timersHandler();
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -38,10 +55,17 @@ const Timers = () => {
   }, []);
 
   const timer = timers.map(timer => {
-    return <Timer description={timer.description} key={timer._id} />;
+    return (
+      <Timer
+        description={timer.description}
+        deleteHandler={deleteHandler}
+        _id={timer._id}
+        key={timer._id}
+      />
+    );
   });
 
-  return <>{timer}</>;
+  return <div className="auth__timer">{timer}</div>;
 };
 
 export default Timers;
