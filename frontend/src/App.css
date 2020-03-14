@@ -152,7 +152,7 @@ button:hover {
 
 .auth__timer-content__info {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto auto;
   column-gap: 50px;
   justify-content: center;
   align-content: center;
@@ -190,18 +190,20 @@ button:hover {
 
 .auth__creator-form {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: auto 40px;
+  grid-template-rows: 40px 40px;
+  justify-content: start;
 }
 
-.auth__creator-form-input__base,
+.auth__creator-form-input__base {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: start;
+}
+
 .auth__creator-form-input__time {
   display: grid;
-  grid-template-columns: auto auto;
-  justify-content: center;
-  align-content: center;
-  justify-self: center;
-  align-self: center;
-  /* background: var(--purple); */
+  grid-template-columns: auto auto auto auto;
 }
 
 .auth__creator-form-input__base-label,
@@ -218,8 +220,12 @@ button:hover {
 }
 
 .auth__creator-form-input__base-label {
-  border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
+  padding-left: 10px;
+}
+
+.auth__creator-form-input__time-label {
+  border-bottom-left-radius: 5px;
   padding-left: 10px;
 }
 
@@ -244,12 +250,35 @@ button:hover {
   /* background: var(--thirdary-color); */
 }
 
+.auth__creator-form-input__base input::placeholder,
+.auth__creator-form-input__time input::placeholder {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.auth__creator-form-input__base input:-webkit-autofill,
+.auth__creator-form-input__base input:-webkit-autofill:hover,
+.auth__creator-form-input__base input:-webkit-autofill:focus,
+.auth__creator-form-input__base input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.auth__creator-form-input__time input:-webkit-autofill,
+.auth__creator-form-input__time input:-webkit-autofill:hover,
+.auth__creator-form-input__time input:-webkit-autofill:focus,
+.auth__creator-form-input__time input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
+}
+
 .auth__creator-form-add {
+  grid-column: 2;
+  grid-row-start: 1;
 }
 
 .auth__creator-form-add button {
-  height: 40px;
-  width: 40px;
+  height: 80px;
+  width: 100%;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }

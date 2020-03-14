@@ -8,7 +8,9 @@ const Timer = props => {
     <div className="auth__timer-content">
       <div className="auth__timer-content__info">
         <p>{props.base}</p>
-        <p>{props.time}</p>
+        <p>{props.time.days}</p>
+        <p>{props.time.hours}</p>
+        <p>{props.time.minutes}</p>
       </div>
       <div
         className="auth__timer-content__close"

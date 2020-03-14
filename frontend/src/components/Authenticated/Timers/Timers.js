@@ -43,11 +43,20 @@ const Timers = () => {
   const createHandler = async event => {
     event.preventDefault();
     const base = event.target.base.value;
-    const time = event.target.time.value;
+    const days = event.target.days.value;
+    const hours = event.target.hours.value;
+    const minutes = event.target.minutes.value;
     try {
       await axios.post(
         `/api/v1/timers`,
-        { base, time },
+        {
+          base,
+          time: {
+            days,
+            hours,
+            minutes
+          }
+        },
         {
           credentials: "include"
         }
