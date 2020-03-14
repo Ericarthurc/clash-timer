@@ -115,12 +115,20 @@ button:hover {
 }
 
 .auth__user {
+  display: grid;
   height: 40px;
-  /* border: 3px solid var(--secondary-color); */
+  /* border: 3px solid var(--thirdary-color); */
   border-top: 0;
   background: var(--purple);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  justify-content: center;
+  align-content: center;
+}
+
+.auth__user p {
+  color: white;
+  font-weight: 600;
 }
 
 .auth__timer {
@@ -144,6 +152,8 @@ button:hover {
 
 .auth__timer-content__info {
   display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 50px;
   justify-content: center;
   align-content: center;
   border-top-left-radius: 5px;
@@ -169,8 +179,85 @@ button:hover {
   background: #ff3c00;
 }
 
+.auth__creator {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-self: center;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.auth__creator-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+}
+
+.auth__creator-form-input__base,
+.auth__creator-form-input__time {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-content: center;
+  justify-self: center;
+  align-self: center;
+  /* background: var(--purple); */
+}
+
+.auth__creator-form-input__base-label,
+.auth__creator-form-input__time-label {
+  display: grid;
+  height: 40px;
+  justify-content: center;
+  align-content: center;
+  justify-self: center;
+  align-self: center;
+  color: white;
+  font-weight: 600;
+  background: var(--purple);
+}
+
+.auth__creator-form-input__base-label {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  padding-left: 10px;
+}
+
+.auth__creator-form-input__base input,
+.auth__creator-form-input__time input {
+  color: #ffffff;
+  background: var(--purple);
+  height: 40px;
+  width: 100%;
+  border-radius: 0;
+}
+
+.auth__creator-form-input__base input:hover,
+.auth__creator-form-input__time input:hover {
+  box-shadow: none;
+  /* background: var(--thirdary-color); */
+}
+
+.auth__creator-form-input__base input:focus,
+.auth__creator-form-input__time input:focus {
+  box-shadow: none;
+  /* background: var(--thirdary-color); */
+}
+
+.auth__creator-form-add {
+}
+
+.auth__creator-form-add button {
+  height: 40px;
+  width: 40px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .auth__logout button {
   background: var(--purple);
+  color: white;
+  font-weight: 600;
 }
 
 .auth__logout button:hover {

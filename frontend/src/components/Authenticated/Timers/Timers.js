@@ -14,11 +14,13 @@ import history from "../../../history";
 
 // REACT COMPONENTS
 import Timer from "./Timer/Timer";
+import Creator from "./Creator/Creator";
 
 const Timers = () => {
   const cookies = new Cookies();
   const [timers, setTimers] = useState([]);
 
+  // GET Timers on startup
   const timersHandler = async () => {
     if (cookies.get("loggedIn") === "1") {
       try {
@@ -37,6 +39,27 @@ const Timers = () => {
     }
   };
 
+  // CREATE Timer
+  const createHandler = async event => {
+    event.preventDefault();
+    const base = event.target.base.value;
+    const time = event.target.time.value;
+    try {
+      await axios.post(
+        `/api/v1/timers`,
+        { base, time },
+        {
+          credentials: "include"
+        }
+      );
+      // GRABS NEW ARRAY AFTER CREATION
+      timersHandler();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // DELETE Timer
   const deleteHandler = async _id => {
     try {
       await axios.delete(`/api/v1/timers/${_id}`, {
@@ -57,7 +80,8 @@ const Timers = () => {
   const timer = timers.map(timer => {
     return (
       <Timer
-        description={timer.description}
+        base={timer.base}
+        time={timer.time}
         deleteHandler={deleteHandler}
         _id={timer._id}
         key={timer._id}
@@ -65,7 +89,14 @@ const Timers = () => {
     );
   });
 
-  return <div className="auth__timer">{timer}</div>;
+  return (
+    <>
+      {timers == "" ? null : <div className="auth__timer">{timer}</div>}
+      <div className="auth__creator">
+        <Creator creator={createHandler}></Creator>
+      </div>
+    </>
+  );
 };
 
 export default Timers;

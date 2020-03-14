@@ -3,7 +3,12 @@ const validator = require("validator");
 
 const timerSchema = new mongoose.Schema(
   {
-    description: {
+    base: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    time: {
       type: String,
       required: true,
       trim: true
