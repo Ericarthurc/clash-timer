@@ -14,7 +14,6 @@ const Timer = props => {
         onClick={() => props.deleteHandler(props._id)}
       >
         {/* SVG HERE */}
-        <p>X</p>
       </div>
     </div>
   );

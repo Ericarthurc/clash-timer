@@ -1,9 +1,10 @@
 :root {
   --main-color: #21252a;
-  --secondary-color: #ffc400;
-  --thirdary-color: #212ee0;
-  --focus-border: #a4e021;
-  --font-color: #fff;
+  --secondary-color: #87c735;
+  --thirdary-color: #ffcd00;
+  --focus-border: #87c735;
+  --purple: #682cbf;
+  --font-color: #21252a;
   --input-colors: ;
   --border-colors: ;
 }
@@ -104,14 +105,22 @@ button:hover {
 /* AUTHENTICATED ROUTE /main */
 
 .auth {
+  margin: 0 30px;
   display: grid;
   gap: 20px;
+  grid-template-columns: minmax(200px, 400px);
   grid-template-rows: auto auto auto;
   justify-content: center;
   text-align: center;
 }
 
 .auth__user {
+  height: 40px;
+  /* border: 3px solid var(--secondary-color); */
+  border-top: 0;
+  background: var(--purple);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .auth__timer {
@@ -127,11 +136,10 @@ button:hover {
   height: 40px;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto;
-  /* background: yellow; */
 }
 
 .auth__timer-content p {
-  color: black;
+  /* color: black; */
 }
 
 .auth__timer-content__info {
@@ -141,7 +149,6 @@ button:hover {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   background: var(--thirdary-color);
-  width: 300px;
 }
 
 .auth__timer-content__close {
@@ -159,8 +166,13 @@ button:hover {
 }
 
 .auth__timer-content__close:hover {
-  background: red;
+  background: #ff3c00;
 }
 
-.auth__logout {
+.auth__logout button {
+  background: var(--purple);
+}
+
+.auth__logout button:hover {
+  background: #ff3c00;
 }
