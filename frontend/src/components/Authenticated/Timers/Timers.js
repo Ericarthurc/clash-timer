@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 
 // CONTEXT
 import Context from "../../../context";
@@ -19,6 +19,7 @@ import Creator from "./Creator/Creator";
 const Timers = () => {
   const cookies = new Cookies();
   const [timers, setTimers] = useState([]);
+  const [currentTime, setCurrentTime] = useState(new Date().getTime());
 
   // GET Timers on startup
   const timersHandler = async () => {
@@ -27,7 +28,6 @@ const Timers = () => {
         const data = await axios.get("/api/v1/timers", {
           credentials: "include"
         });
-        console.log("[WEHA]", data.data.data);
         setTimers(data.data.data);
       } catch (error) {
         console.log(error);
@@ -83,13 +83,19 @@ const Timers = () => {
   };
 
   useEffect(() => {
-    console.log("[USE EFFECT TIMERS]");
     timersHandler();
+    const interval = setInterval(() => {
+      console.log("doing it");
+      setCurrentTime(new Date().getTime());
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   const timer = timers.map(timer => {
     const remaining = new Date(timer.time).getTime();
-    const distance = remaining - new Date().getTime();
+    const distance = remaining - currentTime;
     const days = Math.floor(distance / 86400000);
     const hours = Math.floor((distance % 86400000) / 3600000);
     const minutes = Math.floor((distance % 3600000) / 60000);
@@ -110,11 +116,15 @@ const Timers = () => {
     );
   });
 
-  const sortedArray = timer.sort(timer => {});
+  console.log(timer);
+
+  const sortedArray = timer.sort((a, b) =>
+    a.props.time > b.props.time ? 1 : b.props.time > a.props.time ? -1 : 0
+  );
 
   return (
     <>
-      {timers == "" ? null : <div className="auth__timer">{timer}</div>}
+      {timers == "" ? null : <div className="auth__timer">{sortedArray}</div>}
       <div className="auth__creator">
         <Creator creator={createHandler}></Creator>
       </div>
