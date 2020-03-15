@@ -43,19 +43,20 @@ const Timers = () => {
   const createHandler = async event => {
     event.preventDefault();
     const base = event.target.base.value;
-    const days = event.target.days.value;
-    const hours = event.target.hours.value;
-    const minutes = event.target.minutes.value;
+
+    const days = event.target.days.value * 86400000;
+    const hours = event.target.hours.value * 3600000;
+    const minutes = event.target.minutes.value * 60000;
+
+    const currentTime = Date.now();
+    const time = currentTime + days + hours + minutes;
+
     try {
       await axios.post(
         `/api/v1/timers`,
         {
           base,
-          time: {
-            days,
-            hours,
-            minutes
-          }
+          time
         },
         {
           credentials: "include"
@@ -87,16 +88,29 @@ const Timers = () => {
   }, []);
 
   const timer = timers.map(timer => {
+    const remaining = new Date(timer.time).getTime();
+    const distance = remaining - new Date().getTime();
+    const days = Math.floor(distance / 86400000);
+    const hours = Math.floor((distance % 86400000) / 3600000);
+    const minutes = Math.floor((distance % 3600000) / 60000);
+    const seconds = Math.floor((distance % 60000) / 1000);
+
     return (
       <Timer
         base={timer.base}
-        time={timer.time}
+        time={distance}
+        days={days}
+        hours={hours}
+        minutes={minutes}
+        seconds={seconds}
         deleteHandler={deleteHandler}
         _id={timer._id}
         key={timer._id}
       />
     );
   });
+
+  const sortedArray = timer.sort(timer => {});
 
   return (
     <>

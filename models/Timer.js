@@ -9,23 +9,8 @@ const timerSchema = new mongoose.Schema(
       trim: true
     },
     time: {
-      days: {
-        type: Number,
-        required: true,
-        min: 0
-      },
-      hours: {
-        type: Number,
-        required: true,
-        min: 0,
-        max: 23
-      },
-      minutes: {
-        type: Number,
-        required: true,
-        min: 0,
-        max: 59
-      }
+      type: Date,
+      required: true
     },
     owner: {
       type: mongoose.Schema.Types.ObjectId,

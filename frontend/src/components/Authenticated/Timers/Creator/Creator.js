@@ -19,18 +19,21 @@ const Creator = props => {
             placeholder="Days"
             id="time"
             name="days"
+            type="Number"
           />
           <input
             className="time-label-hours"
             placeholder="Hours"
             id="time"
             name="hours"
+            type="Number"
           />
           <input
             className="time-label-minutes"
             placeholder="Minutes"
             id="time"
             name="minutes"
+            type="Number"
           />
         </div>
         <div className="auth__creator-form-add">

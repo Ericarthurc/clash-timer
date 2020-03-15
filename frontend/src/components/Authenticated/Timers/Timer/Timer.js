@@ -13,9 +13,10 @@ const Timer = props => {
         </div>
         <div className="content__info-time">
           <p>Time Left:</p>
-          <p>{props.time.days}:</p>
-          <p>{props.time.hours}:</p>
-          <p>{props.time.minutes}</p>
+          <p>{props.days}:</p>
+          <p>{props.hours}:</p>
+          <p>{props.minutes}:</p>
+          <p>{props.seconds}</p>
         </div>
       </div>
       <div
