@@ -14,9 +14,24 @@ const Creator = props => {
           <div className="auth__creator-form-input__time-label">
             <label htmlFor="time">Time Left:</label>
           </div>
-          <input placeholder="Days" id="time" name="days" />
-          <input placeholder="Hours" id="time" name="hours" />
-          <input placeholder="Minutes" id="time" name="minutes" />
+          <input
+            className="time-label-days"
+            placeholder="Days"
+            id="time"
+            name="days"
+          />
+          <input
+            className="time-label-hours"
+            placeholder="Hours"
+            id="time"
+            name="hours"
+          />
+          <input
+            className="time-label-minutes"
+            placeholder="Minutes"
+            id="time"
+            name="minutes"
+          />
         </div>
         <div className="auth__creator-form-add">
           <button type="submit"></button>

@@ -4,7 +4,9 @@
   --thirdary-color: #ffcd00;
   --focus-border: #87c735;
   --purple: #682cbf;
-  --font-color: #21252a;
+  --ui-font-color: #fff;
+  --timers-font-color: #21252a;
+  --ui-close-color: #ff3c00;
   --input-colors: ;
   --border-colors: ;
 }
@@ -32,7 +34,8 @@ body {
 p {
   margin: 0;
   padding: 0;
-  color: var(--font-color);
+  font-weight: 600;
+  color: var(--timers-font-color);
 }
 
 input {
@@ -127,7 +130,7 @@ button:hover {
 }
 
 .auth__user p {
-  color: white;
+  color: var(--ui-font-color);
   font-weight: 600;
 }
 
@@ -152,13 +155,32 @@ button:hover {
 
 .auth__timer-content__info {
   display: grid;
-  grid-template-columns: auto auto auto auto;
-  column-gap: 50px;
+  grid-template-columns: auto auto;
+  column-gap: 20px;
   justify-content: center;
   align-content: center;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   background: var(--thirdary-color);
+  color: var(--timers-font-color);
+}
+
+.content__info-base {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.content__info-base p:first-child {
+  padding-right: 5px;
+}
+
+.content__info-time {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+.content__info-time p:first-child {
+  padding-right: 5px;
 }
 
 .auth__timer-content__close {
@@ -170,13 +192,13 @@ button:hover {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   width: 40px;
-  font-size: 20px;
+  /* font-size: 20px; */
   transition: color 0.12s ease-in-out, background-color 0.12s ease-in-out,
     border-color 0.12s ease-in-out, box-shadow 0.12s ease-in-out;
 }
 
 .auth__timer-content__close:hover {
-  background: #ff3c00;
+  background: var(--ui-close-color);
 }
 
 .auth__creator {
@@ -214,7 +236,7 @@ button:hover {
   align-content: center;
   justify-self: center;
   align-self: center;
-  color: white;
+  color: var(--ui-font-color);
   font-weight: 600;
   background: var(--purple);
 }
@@ -231,11 +253,12 @@ button:hover {
 
 .auth__creator-form-input__base input,
 .auth__creator-form-input__time input {
-  color: #ffffff;
+  color: var(--ui-font-color);
   background: var(--purple);
   height: 40px;
   width: 100%;
   border-radius: 0;
+  padding: 0px 5px;
 }
 
 .auth__creator-form-input__base input:hover,
@@ -285,10 +308,10 @@ button:hover {
 
 .auth__logout button {
   background: var(--purple);
-  color: white;
+  color: var(--ui-font-color);
   font-weight: 600;
 }
 
 .auth__logout button:hover {
-  background: #ff3c00;
+  background: var(--ui-close-color);
 }
