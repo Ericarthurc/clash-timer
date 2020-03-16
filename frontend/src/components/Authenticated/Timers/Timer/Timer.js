@@ -6,7 +6,7 @@ import axios from "axios";
 const Timer = props => {
   return (
     <div className="auth__timer-content">
-      <div className="auth__timer-content__info">
+      <div className={`auth__timer-content__info ${props.className}`}>
         <div className="content__info-base">
           <p>Base:</p>
           <p>{props.base}</p>

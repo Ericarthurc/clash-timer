@@ -175,6 +175,10 @@ button:hover {
   color: var(--timers-font-color);
 }
 
+.inactive {
+  background: var(--ui-close-color);
+}
+
 .content__info-base {
   display: grid;
   grid-template-columns: auto auto;
@@ -198,7 +202,7 @@ button:hover {
   display: grid;
   justify-content: center;
   align-content: center;
-  background: var(--secondary-color);
+  background: var(--ui-close-color);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   width: 40px;
@@ -208,7 +212,7 @@ button:hover {
 }
 
 .auth__timer-content__close:hover {
-  background: var(--ui-close-color);
+  background: var(--secondary-color);
 }
 
 .auth__creator {

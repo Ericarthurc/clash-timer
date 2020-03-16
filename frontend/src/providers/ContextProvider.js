@@ -16,35 +16,32 @@ const ContextProvider = props => {
   const cookies = new Cookies();
 
   // AXIOS MIDDLEWARE FOR TESTING
-  const service = new Service(axios);
+  // const service = new Service(axios);
 
-  service.register({
-    onRequest(config) {
-      console.log("onRequest", config);
-      return config;
-    },
-    onSync(promise) {
-      console.log("onSync", promise);
-      return promise;
-    },
-    onResponse(response) {
-      console.log("onResponse", response);
-      return response;
-    }
-  });
+  // service.register({
+  //   onRequest(config) {
+  //     console.log("onRequest", config);
+  //     return config;
+  //   },
+  //   onSync(promise) {
+  //     console.log("onSync", promise);
+  //     return promise;
+  //   },
+  //   onResponse(response) {
+  //     console.log("onResponse", response);
+  //     return response;
+  //   }
+  // });
 
   // STATE
   const [user, setUser] = useState("");
 
   // ACTIONS
   const persistentHandler = async () => {
-    console.log("[PERSISTENT]");
     try {
       const user = await axios.get("/api/v1/users/me", {
         credentials: "include"
       });
-      console.log("[USER]", user);
-
       setUser(user.data.user);
       history.push("/main");
     } catch (error) {

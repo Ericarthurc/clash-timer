@@ -52,6 +52,7 @@ const Timers = () => {
     const time = currentTime + days + hours + minutes;
 
     try {
+      event.persist();
       await axios.post(
         `/api/v1/timers`,
         {
@@ -63,6 +64,7 @@ const Timers = () => {
         }
       );
       // GRABS NEW ARRAY AFTER CREATION
+      event.target.reset();
       timersHandler();
     } catch (error) {
       console.log(error);
@@ -85,7 +87,6 @@ const Timers = () => {
   useEffect(() => {
     timersHandler();
     const interval = setInterval(() => {
-      console.log("doing it");
       setCurrentTime(new Date().getTime());
     }, 1000);
     return () => {
@@ -96,13 +97,24 @@ const Timers = () => {
   const timer = timers.map(timer => {
     const remaining = new Date(timer.time).getTime();
     const distance = remaining - currentTime;
-    const days = Math.floor(distance / 86400000);
-    const hours = Math.floor((distance % 86400000) / 3600000);
-    const minutes = Math.floor((distance % 3600000) / 60000);
-    const seconds = Math.floor((distance % 60000) / 1000);
+    let days = Math.floor(distance / 86400000);
+    let hours = Math.floor((distance % 86400000) / 3600000);
+    let minutes = Math.floor((distance % 3600000) / 60000);
+    let seconds = Math.floor((distance % 60000) / 1000);
+
+    let timerClass = "";
+
+    if (distance <= 0) {
+      days = 0;
+      hours = 0;
+      minutes = 0;
+      seconds = 0;
+      timerClass = "inactive";
+    }
 
     return (
       <Timer
+        className={timerClass}
         base={timer.base}
         time={distance}
         days={days}
@@ -115,8 +127,6 @@ const Timers = () => {
       />
     );
   });
-
-  console.log(timer);
 
   const sortedArray = timer.sort((a, b) =>
     a.props.time > b.props.time ? 1 : b.props.time > a.props.time ? -1 : 0
