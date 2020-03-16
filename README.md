@@ -8,10 +8,10 @@ Project just has super low level basic authentication on it right now; massive w
 - [ ] Login and Logout button need same css font styling
 - [ ] maybe similar label/input style as "creator" for login
 - [ ] component for when there isn't any timers
-- [ ] add timer countdown functionality and math
-- [ ] consider days, hours, minutes, and seconds for timer
-- [ ] sort timers by how much time is left; not by creation time
-- [ ] when timer is 0 change timer color
+- [x] add timer countdown functionality and math
+- [x] consider days, hours, minutes, and seconds for timer
+- [x] sort timers by how much time is left; not by creation time
+- [x] when timer is 0 change timer color
 - [ ] css styling for timers in general
 - [ ] maybe consider model for base names, then user specific dropdowns
 - [ ] svg image for "closer" and "adder"

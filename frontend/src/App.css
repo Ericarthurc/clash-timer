@@ -3,10 +3,11 @@
   --secondary-color: #87c735;
   --thirdary-color: #ffcd00;
   --focus-border: #87c735;
-  --purple: #682cbf;
+  --purple: #3e49bb;
   --ui-font-color: #fff;
   --timers-font-color: #21252a;
   --ui-close-color: #ff3c00;
+  --ui-inactive: #ff5500;
   --input-colors: ;
   --border-colors: ;
 }
@@ -176,7 +177,7 @@ button:hover {
 }
 
 .inactive {
-  background: var(--ui-close-color);
+  background: var(--ui-inactive);
 }
 
 .content__info-base {
