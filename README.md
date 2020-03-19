@@ -5,7 +5,8 @@ Project just has super low level basic authentication on it right now; massive w
 **TO DO**
 
 - [x] two font css variables; one for UI one for timers
-- [ ] Login and Logout button need same css font styling
+- [ ] different colors for war logs (normal, prep, and attack)
+- [ ] login and logout button need same css font styling
 - [ ] maybe similar label/input style as "creator" for login
 - [ ] component for when there isn't any timers
 - [x] add timer countdown functionality and math
